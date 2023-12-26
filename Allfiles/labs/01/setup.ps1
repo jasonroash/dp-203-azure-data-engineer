@@ -103,7 +103,7 @@ $id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspace).id
 try
 {
 		New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
-{
+}
 catch 
 {
 	write-output $_.Exception.Message -Foregroundcolor Red
