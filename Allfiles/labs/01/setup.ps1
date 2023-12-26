@@ -47,9 +47,9 @@ foreach ($provider in $provider_list){
 $resourceGroupName = "jasonro"
 
 # Choose a random region
-Write-Host "Finding an available region. This may take several minutes...";
-$delay = 0, 30, 60, 90, 120 | Get-Random
-Start-Sleep -Seconds $delay # random delay to stagger requests from multi-student classes
+#Write-Host "Finding an available region. This may take several minutes...";
+#$delay = 0, 30, 60, 90, 120 | Get-Random
+#Start-Sleep -Seconds $delay # random delay to stagger requests from multi-student classes
 #$preferred_list = "australiaeast","centralus","southcentralus","eastus2","northeurope","southeastasia","uksouth","westeurope","westus","westus2"
 #$locations = Get-AzLocation | Where-Object {
 #    $_.Providers -contains "Microsoft.Synapse" -and
@@ -66,14 +66,14 @@ $Region = "northcentralus" #$locations.Get($rand).Location
 # (for some subsription types, quotas are adjusted dynamically based on capacity)
  $success = 0
 
-Write-Host "Creating $resourceGroupName resource group in $Region ..."
-New-AzResourceGroup -Name $resourceGroupName -Location $Region | Out-Null
+#Write-Host "Creating $resourceGroupName resource group in $Region ..."
+#New-AzResourceGroup -Name $resourceGroupName -Location $Region | Out-Null
 
 # Create Synapse workspace
-$synapseWorkspace = "synapse$suffix"
-$dataLakeAccountName = "datalake$suffix"
-$sparkPool = "spark$suffix"
-$sqlDatabaseName = "sql$suffix"
+$synapseWorkspace = "synapse$resourceGroupName"
+$dataLakeAccountName = "datalake$resourceGroupName"
+$sparkPool = "spark$resourceGroupName"
+$sqlDatabaseName = "sql$resourceGroupName"
 
 
 write-host "Creating $synapseWorkspace Synapse Analytics workspace in $resourceGroupName resource group..."
@@ -87,7 +87,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -sqlDatabaseName $sqlDatabaseName `
   -sqlUser $sqlUser `
   -sqlPassword $sqlPassword `
-  -uniqueSuffix $suffix `
+  -uniqueSuffix $resourceGroupName `
   -Force
 
 # Pause Data Explorer pool
