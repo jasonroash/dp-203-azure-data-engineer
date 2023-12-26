@@ -44,10 +44,7 @@ foreach ($provider in $provider_list){
     Write-Host "$provider : $status"
 }
 
-# Generate unique random suffix
-[string]$suffix =  "jasonro"
-Write-Host "Your randomly-generated suffix for Azure resources is $suffix"
-$resourceGroupName = "dp203-$suffix"
+$resourceGroupName = "jasonro"
 
 # Choose a random region
 Write-Host "Finding an available region. This may take several minutes...";
