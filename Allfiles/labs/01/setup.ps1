@@ -71,7 +71,7 @@ $Region = "northcentralus" #$locations.Get($rand).Location
 
 # Create Synapse workspace
 $synapseWorkspace = "synapsejasonr"
-$dataLakeAccountName = "datalakejasonr"
+$dataLakeAccountName = "datalakejasonrash"
 $sparkPool = "sparkjasonr"
 $sqlDatabaseName = "sqljasonr"
 
