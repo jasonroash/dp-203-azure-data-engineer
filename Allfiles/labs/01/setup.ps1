@@ -70,10 +70,10 @@ $Region = "northcentralus" #$locations.Get($rand).Location
 #New-AzResourceGroup -Name $resourceGroupName -Location $Region | Out-Null
 
 # Create Synapse workspace
-$synapseWorkspace = "synapse$resourceGroupName"
-$dataLakeAccountName = "datalake$resourceGroupName"
-$sparkPool = "spark$resourceGroupName"
-$sqlDatabaseName = "sql$resourceGroupName"
+$synapseWorkspace = "synapsejasonr"
+$dataLakeAccountName = "datalakejasonr"
+$sparkPool = "sparkjasonr"
+$sqlDatabaseName = "sqljasonr"
 
 
 write-host "Creating $synapseWorkspace Synapse Analytics workspace in $resourceGroupName resource group..."
