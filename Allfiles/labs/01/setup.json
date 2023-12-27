@@ -178,34 +178,6 @@
         ]
       },
       {
-        "type": "Microsoft.Storage/storageAccounts/blobServices/containers/providers/roleAssignments",
-        "apiVersion": "2018-09-01-preview",
-        "name": "[concat(parameters('dataLakeAccountName'), '/default/', variables('defaultDataLakeStorageFilesystemName'), '/Microsoft.Authorization/',  guid(concat(resourceGroup().id, '/', variables('storageBlobDataOwnerRoleID'), '/', parameters('workspaceName'))))]",
-        "location": "[variables('location')]",
-        "dependsOn": [
-          "[concat('Microsoft.Synapse/workspaces/', parameters('workspaceName'))]"
-        ],
-        "properties": {
-          "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('storageBlobDataOwnerRoleID'))]",
-          "principalId": "[reference(concat('Microsoft.Synapse/workspaces/', parameters('workspaceName')), '2019-06-01-preview', 'Full').identity.principalId]",
-          "principalType": "ServicePrincipal"
-        }
-      },
-      {
-        "type": "Microsoft.Authorization/roleAssignments",
-        "apiVersion": "2018-09-01-preview",
-        "name": "[guid(concat(resourceGroup().id, '/', variables('storageBlobDataOwnerRoleID'), '/', parameters('workspaceName'), '2'))]",
-        "location": "[variables('location')]",
-        "dependsOn": [
-          "[concat('Microsoft.Synapse/workspaces/', parameters('workspaceName'))]"
-        ],
-        "properties": {
-          "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('storageBlobDataOwnerRoleID'))]",
-          "principalId": "[reference(concat('Microsoft.Synapse/workspaces/', parameters('workspaceName')), '2019-06-01-preview', 'Full').identity.principalId]",
-          "principalType": "ServicePrincipal"
-        }
-      },
-      {
           "type": "Microsoft.Synapse/workspaces/sqlPools",
           "apiVersion": "2019-06-01-preview",
           "name": "[concat(parameters('workspaceName'), '/', parameters('sqlDatabaseName'))]",
