@@ -44,7 +44,7 @@ foreach ($provider in $provider_list){
     Write-Host "$provider : $status"
 }
 
-$resourceGroupName = "jasonro"
+$resourceGroupName = "rg-jasonro"
 
 # Choose a random region
 #Write-Host "Finding an available region. This may take several minutes...";
@@ -79,6 +79,7 @@ $sqlDatabaseName = "sql$resourceGroupName"
 write-host "Creating $synapseWorkspace Synapse Analytics workspace in $resourceGroupName resource group..."
 write-host "(This may take some time!)"
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+  -Location $Region
   -TemplateFile "setup.json" `
   -Mode Complete `
   -workspaceName $synapseWorkspace `
