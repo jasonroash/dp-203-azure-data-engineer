@@ -44,7 +44,7 @@ foreach ($provider in $provider_list){
     Write-Host "$provider : $status"
 }
 
-$resourceGroupName = "rg-jasonro"
+$resourceGroupName = "rg-jasonr"
 
 # Choose a random region
 #Write-Host "Finding an available region. This may take several minutes...";
